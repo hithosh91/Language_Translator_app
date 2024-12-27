@@ -12,5 +12,19 @@ export default {
       translate: ["active"],
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        ".scrollbar-hide": {
+          "-ms-overflow-style": "none", // For IE and Edge
+          "scrollbar-width": "none", // For Firefox
+        },
+        ".scrollbar-hide::-webkit-scrollbar": {
+          display: "none", // For Chrome, Safari, and Edge
+        },
+      };
+
+      addUtilities(newUtilities);
+    },
+  ],
 };
